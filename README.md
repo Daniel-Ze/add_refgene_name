@@ -13,6 +13,11 @@ Change to the scripts directory:
 ```
 cd add_refgene_name
 ```
+You might need to make the scripts executeable:
+
+```
+chmod +x add_refgene_names.py && chmod +x add_refgene_names.sh
+```
 
 Install the necessary dependencies via conda:
 
@@ -23,6 +28,8 @@ mamba env create -f conda_env.yml
 
 This will install the dependies specified in the .yml file and create a conda environment called "add_refgene_names".
 This conda environment will be automaticaly activated and deactivated during the script run.
+
+If you want to access this from everywhere consider putting the folder in your $PATH.
 
 ## What the script does
 The script uses the "bedtools intersect" tool which generates intersections of annotation files.
