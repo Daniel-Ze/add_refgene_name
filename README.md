@@ -1,4 +1,4 @@
-# Add reference annotation gene IDs to your new annotation
+# Add reference annotation gene IDs to a novel annotation
 The script is desined to take the ID tag of the "gene" feature entry from a LiftOff reference annotation lift over gff3 file and add the gene ID as a note to a novel gene annotation from e.g. PASA
 
 ## Install
