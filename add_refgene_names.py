@@ -101,6 +101,23 @@ def input_data():
 	print("[info]\tPreparing dictonary of {}".format(gff_input_file))
 	gff_dict = {}
 	count = 0
+
+	# Use the ID tag as key for the dictonaries in the dictonary
+	# gff_dict = {gff_entry_ID : { Index : Line_index
+	# 							   Sequence : Sequence_name,
+	#                              Source : Annotation_source,
+	#                              Frature : Feature_type,
+	#							   Start : Start_pos,
+	#							   Stop : Stop_pos,
+	#							   Score : Assigned_score,
+	#							   Strand : +_or_-,
+	#							   Phase : CDS_phase,
+	#							   ID : GFF_entry_ID,
+	#							   Name : GFF_entry_Name,
+	#                              Parent : GFF_entry_Parent,
+	#							   ... (column 9 is completely expanded) }
+	#			 ... (continue for every line in gff3 file)
+	# 			}
 	for f in gff_file:
 		gff_dict[return_dict(f, count)["ID"]]=return_dict(f, count)
 		count = count + 1
@@ -125,6 +142,15 @@ def main():
 	df[["Type","ID"]] = df[0].str.split(';', expand=True)[0].str.split('=', expand=True)
 
 	df = df.drop(columns="Type")
+	df[4] = df[3].str.count(",")
+	df[4] = df[4] + 1
+	one_to_many = pd.DataFrame(data=df[4].value_counts())
+	one_to_many = one_to_many.reset_index()
+	one_to_many.columns = ["one_to_many", "counts"]
+	
+	print("[info]\tAnnoted genes with reference gene ID: {}\n".format(len(df.index)))
+	print(one_to_many)
+	print("\n")
 
 	# Add the reference annotation gene IDs to the last column of the new 
 	# annotation with the flag Note; Adjust this if you want another flag 
@@ -134,6 +160,7 @@ def main():
 		gff_dict[row['ID']]["Note"]=row[3]
 	
 	# Format the dictonary content to propper gff3 format and write to file
+	# This works only if the 
 	print("[info]\tWrite output to file {}".format(out_file))
 	for f_id, f_info in gff_dict.items():
 		col_9 = ""
