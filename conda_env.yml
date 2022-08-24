@@ -1,0 +1,12 @@
+name: add_refgene_names
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - bedtools
+  - pip
+  - pip:
+    - pip
+    - setuptools
+    - pandas
