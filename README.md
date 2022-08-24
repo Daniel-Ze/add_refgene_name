@@ -73,7 +73,6 @@ chr13_Chambourcin	EVM	gene	18497327	18497740	.	-	.		ID=evm.TU.chr13_Cham.1185;Na
 chr13_Chambourcin	EVM	mRNA	18497327	18497740	.	-	.		ID=evm.model.chr13_Cham.1185;Parent=evm.TU.chr13_Cham.1185;Name=EVMpred_chr13_Cham.1185;
 chr13_Chambourcin	EVM	exon	18497327	18497740	.	-	.		ID=evm.model.chr13_Cham.1185.exon1;Parent=evm.model.chr13_Cham.1185;
 chr13_Chambourcin	EVM	CDS	18497327	18497740	.	-	0		ID=evm.model.chr13_Cham.1185.cds.1;Parent=evm.model.chr13_Cham.1185;
-chr13_Chambourcin	.	gene	2763370	2766225	.	-	.		ID=evm.TU.chr13_Cham.345;Name=EVMpred_chr13_Cham.345;Note=cham_Vitvi13g04080;
 ```
 
 ## Dependencies
