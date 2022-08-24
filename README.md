@@ -66,8 +66,7 @@ A run produces the following commandline output:
 
 
 [info]  Iterate over grouped intersect list and add them to the gff dictonary.
-[info]  Write output to file PNIsoSeqCuff_mydb_pasa.gene_structures_post_PASA_updates.152236.cleanfinal.gff3
-mkdir: ./add_ref_gene_name_results: File exists
+[info]  Write output to file EVM_PASA_update.cleanfinal.gff3
 [info]  Success.
 ```
 
