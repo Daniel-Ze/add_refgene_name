@@ -5,6 +5,10 @@ channels:
 dependencies:
   - python=3.9
   - bedtools
+  - R=4.1.2
+  - r-readr=2.1.2
+  - r-ggplot2=3.3.6
+  - r-r.utils=2.11.0
   - pip
   - pip:
     - pip
