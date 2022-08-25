@@ -16,7 +16,7 @@ ADD_VITVI_NAME_HOME="$(cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd
 
 # Get a variable for the python helper script
 python_helper_script=${ADD_VITVI_NAME_HOME}"add_refgene_names.py"
-
+plot_otm=${ADD_VITVI_NAME_HOME}"plot_1tomany.R"
 # Help to be printed
 helpFunction()
 {
@@ -108,7 +108,6 @@ awk '{split($18, a, ";"); split(a[2], b, "="); print $9"\t"b[2]}' \
 				   ${WD}EVM_pasa_update_LiftOff.intersect.txt \
 				   > ${WD}EVM_pasa_update_LiftOff.intersect_adj.txt \
 				   2>> ${WD}add_ref_gene_name.log
-conda deactivate
 
 # Clean out the PASA gff3 file:
 #  - remove all comments indicated by "#"
@@ -124,17 +123,28 @@ python $python_helper_script -i ${WD}EVM_pasa_update_LiftOff.intersect_adj.txt \
 						 	 -g $parameterI_clean \
 						 	 2>> ${WD}add_ref_gene_name.log
 
+# Run Rscript to plot the results of the refrence gene ID groupings
+Rscript $plot_otm -i ${WD}1tomany_overview.tsv 2>> ${WD}add_ref_gene_name.log > /dev/null
+
+conda deactivate
+
 # Houskeeping
 mkdir ${WD}add_ref_gene_name_results
+
+#  - remove
+rm ${WD}EVM_pasa_update.gene.gff3
+rm ${WD}LiftOff.gene.gff3
+rm ${WD}EVM_pasa_update_LiftOff.intersect.txt
+#  - move
 mv ${WD}add_ref_gene_name.log ${WD}add_ref_gene_name_results
-mv ${WD}EVM_pasa_update.gene.gff3 ${WD}add_ref_gene_name_results
-mv ${WD}LiftOff.gene.gff3 ${WD}add_ref_gene_name_results
 mv ${WD}EVM_pasa_update_LiftOff.intersect_adj.txt ${WD}add_ref_gene_name_results
-mv ${WD}EVM_pasa_update_LiftOff.intersect.txt ${WD}add_ref_gene_name_results
 mv $parameterI_clean ${WD}add_ref_gene_name_results
 mv ${WD}$(basename $parameterI .gff3).cleanfinal.gff3 ${WD}add_ref_gene_name_results
 mv ${WD}1tomany_overview.tsv ${WD}add_ref_gene_name_results
-mv ${WD}gff_intersect_1t0many_sort.tsv ${WD}add_ref_gene_name_results
+mv ${WD}1tomany_overview.tsv_plot.png ${WD}add_ref_gene_name_results
+mv ${WD}gff3_intersect_1tomany_sort.tsv ${WD}add_ref_gene_name_results
 
+# Goodbye
 echo -e "[info]\tSuccess."
 
+exit 0
