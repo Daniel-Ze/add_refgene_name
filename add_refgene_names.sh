@@ -133,6 +133,8 @@ mv ${WD}EVM_pasa_update_LiftOff.intersect_adj.txt ${WD}add_ref_gene_name_results
 mv ${WD}EVM_pasa_update_LiftOff.intersect.txt ${WD}add_ref_gene_name_results
 mv $parameterI_clean ${WD}add_ref_gene_name_results
 mv ${WD}$(basename $parameterI .gff3).cleanfinal.gff3 ${WD}add_ref_gene_name_results
+mv ${WD}1tomany_overview.tsv ${WD}add_ref_gene_name_results
+mv ${WD}gff_intersect_1t0many_sort.tsv ${WD}add_ref_gene_name_results
 
 echo -e "[info]\tSuccess."
 
