@@ -122,12 +122,12 @@ def input_data():
 		gff_dict[return_dict(f, count)["ID"]]=return_dict(f, count)
 		count = count + 1
 
-	return df, gff_dict, out_file
+	return df, gff_dict, out_file, file_path
 
 
 def main():
 	# Get the input data
-	df, gff_dict, out_file = input_data()
+	df, gff_dict, out_file, file_path = input_data()
 
 	# Open the output file
 	output = open(out_file, 'w')
@@ -144,9 +144,16 @@ def main():
 	df = df.drop(columns="Type")
 	df[4] = df[3].str.count(",")
 	df[4] = df[4] + 1
-	one_to_many = pd.DataFrame(data=df[4].value_counts())
+	df.sort_values(by=[4], ascending=False)
+	df.columns = ["Col_9", "ref_gene_ID", "anno_gene_ID", "count_ref_gene_ID"]
+
+	df.to_csv(file_path+"/gff3_intersect_1tomany_sort.tsv", sep='\t',index=False, columns=["anno_gene_ID", "ref_gene_ID", "count_ref_gene_ID"])
+
+	one_to_many = pd.DataFrame(data=df["count_ref_gene_ID"].value_counts())
 	one_to_many = one_to_many.reset_index()
 	one_to_many.columns = ["one_to_many", "counts"]
+	
+	one_to_many.to_csv(file_path+"/1tomany_overview.tsv", sep="\t", index=False)
 	
 	print("[info]\tAnnoted genes with reference gene ID: {}\n".format(len(df.index)))
 	print(one_to_many)
@@ -157,7 +164,7 @@ def main():
 	# column 9 for that
 	print("[info]\tIterate over grouped intersect list and add them to the gff dictonary.")
 	for index, row in df.iterrows():
-		gff_dict[row['ID']]["Note"]=row[3]
+		gff_dict[row["anno_gene_ID"]]["Note"]=row["ref_gene_ID"]
 	
 	# Format the dictonary content to propper gff3 format and write to file
 	# This works only if the 
