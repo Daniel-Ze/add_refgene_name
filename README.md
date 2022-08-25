@@ -109,6 +109,8 @@ chr13_Chambourcin	EVM	mRNA	18497327	18497740	.	-	.		ID=evm.model.chr13_Cham.1185
 chr13_Chambourcin	EVM	exon	18497327	18497740	.	-	.		ID=evm.model.chr13_Cham.1185.exon1;Parent=evm.model.chr13_Cham.1185;
 chr13_Chambourcin	EVM	CDS	18497327	18497740	.	-	0		ID=evm.model.chr13_Cham.1185.cds.1;Parent=evm.model.chr13_Cham.1185;
 ```
+Plus you get this nice plot about fused genes:
+![title](https://github.com/Daniel-Ze/add_refgene_name/blob/main/plot.png?raw=true)
 
 ## Dependencies
 Please refer to the conda_env.yml file for a detailed list of dependencies.
