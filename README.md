@@ -114,3 +114,10 @@ Plus you get this nice plot about fused genes:
 
 ## Dependencies
 Please refer to the conda_env.yml file for a detailed list of dependencies.
+
+## Update
+**01-09-22**
+  - Fixed gff3 file output (.cleanfinal.gff3); removed addtional tab between column 8 and 9
+  - Switched column 9 reference gene ID filed from "Note" to "ref_geneID"
+  - Added "ref_geneID" field update possibility e.g. if there are multiple reference annotations
+  
