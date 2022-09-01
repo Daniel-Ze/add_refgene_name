@@ -1,6 +1,12 @@
 # Add reference annotation gene IDs to a novel annotation
 The script is desined to take the ID tag of the "gene" feature entry from a LiftOff reference annotation lift over gff3 file and add the gene ID as a note to a novel gene annotation from e.g. PASA
 
+## Update
+**01-09-22**
+  - Fixed gff3 file output (.cleanfinal.gff3); removed addtional tab between column 8 and 9
+  - Switched column 9 reference gene ID filed from "Note" to "ref_geneID"
+  - Added "ref_geneID" field update possibility e.g. if there are multiple reference annotations
+
 ## Install
 Easiest way to install is via miniconda. First clone the repository:
 
@@ -114,10 +120,3 @@ Plus you get this nice plot about fused genes:
 
 ## Dependencies
 Please refer to the conda_env.yml file for a detailed list of dependencies.
-
-## Update
-**01-09-22**
-  - Fixed gff3 file output (.cleanfinal.gff3); removed addtional tab between column 8 and 9
-  - Switched column 9 reference gene ID filed from "Note" to "ref_geneID"
-  - Added "ref_geneID" field update possibility e.g. if there are multiple reference annotations
-  
