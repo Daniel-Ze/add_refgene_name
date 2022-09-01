@@ -136,13 +136,13 @@ rm ${WD}EVM_pasa_update.gene.gff3
 rm ${WD}LiftOff.gene.gff3
 rm ${WD}EVM_pasa_update_LiftOff.intersect.txt
 #  - move
+mv ${WD}EVM_pasa_update_LiftOff.intersect_adj.txt ${WD}add_ref_gene_name_results 2>> ${WD}add_ref_gene_name.log 
+mv $parameterI_clean ${WD}add_ref_gene_name_results 2>> ${WD}add_ref_gene_name.log 
+mv ${WD}$(basename $parameterI .gff3).cleanfinal.gff3 ${WD}add_ref_gene_name_results 2>> ${WD}add_ref_gene_name.log 
+mv ${WD}1tomany_overview.tsv ${WD}add_ref_gene_name_results 2>> ${WD}add_ref_gene_name.log 
+mv ${WD}1tomany_overview.tsv_plot.png ${WD}add_ref_gene_name_results 2>> ${WD}add_ref_gene_name.log 
+mv ${WD}gff3_intersect_1tomany_sort.tsv ${WD}add_ref_gene_name_results 2>> ${WD}add_ref_gene_name.log 
 mv ${WD}add_ref_gene_name.log ${WD}add_ref_gene_name_results
-mv ${WD}EVM_pasa_update_LiftOff.intersect_adj.txt ${WD}add_ref_gene_name_results
-mv $parameterI_clean ${WD}add_ref_gene_name_results
-mv ${WD}$(basename $parameterI .gff3).cleanfinal.gff3 ${WD}add_ref_gene_name_results
-mv ${WD}1tomany_overview.tsv ${WD}add_ref_gene_name_results
-mv ${WD}1tomany_overview.tsv_plot.png ${WD}add_ref_gene_name_results
-mv ${WD}gff3_intersect_1tomany_sort.tsv ${WD}add_ref_gene_name_results
 
 # Goodbye
 echo -e "[info]\tSuccess."
