@@ -104,7 +104,7 @@ bedtools intersect -wb \
 				   2>> ${WD}add_ref_gene_name.log
 
 # Assuming that the ID tag is the first in column 9 of the second gff3 file
-awk '{split($18, a, ";"); split(a[2], b, "="); print $9"\t"b[2]}' \
+awk '{split($18, a, ";"); split(a[1], b, "="); print $9"\t"b[2]}' \
 				   ${WD}EVM_pasa_update_LiftOff.intersect.txt \
 				   > ${WD}EVM_pasa_update_LiftOff.intersect_adj.txt \
 				   2>> ${WD}add_ref_gene_name.log
