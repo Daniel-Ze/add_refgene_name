@@ -2,6 +2,9 @@
 The script is desined to take the ID tag of the "gene" feature entry from a LiftOff reference annotation lift over gff3 file and add the gene ID as a note to a novel gene annotation from e.g. PASA
 
 ## Update
+**05-09-22**
+  - l107 awk cmd was accidentally selecting the second field in column 9 instead of the first (ID=)
+  
 **01-09-22**
   - Fixed gff3 file output (.cleanfinal.gff3); removed addtional tab between column 8 and 9
   - Switched column 9 reference gene ID filed from "Note" to "ref_geneID"
