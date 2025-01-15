@@ -1,5 +1,5 @@
 # Add reference annotation gene IDs to a novel annotation
-The script is desined to take the ID tag of the "gene" feature entry from a LiftOff reference annotation lift over gff3 file and add the gene ID as a note to a novel gene annotation from e.g. PASA
+The script is designed to take the ID tag of the "gene" feature entry from a LiftOff reference annotation lift over gff3 file and add this gene ID as a note to a novel gene annotation from e.g. PASA.
 
 ## Update
 **05-09-22**
@@ -11,6 +11,7 @@ The script is desined to take the ID tag of the "gene" feature entry from a Lift
   - Added "ref_geneID" field update possibility e.g. if there are multiple reference annotations
 
 ## Install
+
 Easiest way to install is via miniconda. First clone the repository:
 
 ```
@@ -41,8 +42,11 @@ This conda environment will be automaticaly activated and deactivated during the
 If you want to access this from everywhere consider putting the folder in your $PATH.
 
 ## What the script does
+
 The script uses the "bedtools intersect" tool which generates intersections of annotation files.
 Only the "gene" feature from the gff3 files will be compared. The intersected reference gene annotations will then be added to the new annotation file as "Note" to column 9.
+
+
 
 A run produces the following commandline output:
 ```
